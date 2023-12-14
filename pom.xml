@@ -56,6 +56,12 @@
       <version>8.0.33</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>42.2.5</version>
+    </dependency>
+
     <!-- Hibernate -->
     <dependency>
       <groupId>org.hibernate</groupId>
