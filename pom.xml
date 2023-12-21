@@ -18,7 +18,11 @@
       </plugin>
     </plugins>
   </build>
-  <packaging>jar</packaging>
+    <modules>
+        <module>chat-client</module>
+      <module>chat-server</module>
+    </modules>
+    <packaging>pom</packaging>
 
   <name>JavaJunior</name>
   <url>https://maven.apache.org</url>
