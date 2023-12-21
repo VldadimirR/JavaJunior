@@ -73,6 +73,7 @@ public class ClientManager implements Runnable {
 
     }
 
+
     private void closeEverything(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter) {
         // Удаление клиента из коллекции
         removeClient();

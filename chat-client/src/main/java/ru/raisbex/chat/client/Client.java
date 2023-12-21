@@ -72,7 +72,6 @@ public class Client {
                     bufferedWriter.flush();
                 }
             }
-
         } catch (IOException e){
             closeEverything(socket, bufferedReader, bufferedWriter);
         }
