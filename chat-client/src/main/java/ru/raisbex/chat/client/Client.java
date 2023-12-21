@@ -59,9 +59,18 @@ public class Client {
             Scanner scanner = new Scanner(System.in);
             while (socket.isConnected()) {
                 String message = scanner.nextLine();
-                bufferedWriter.write(name + ": " + message);
-                bufferedWriter.newLine();
-                bufferedWriter.flush();
+                if (message.startsWith("@")) {
+                    String[] parts = message.split(" ", 2);
+                    String targetName = parts[0].substring(1);
+                    String personalMessage = parts[1];
+                    bufferedWriter.write("@" + targetName + " " + personalMessage);
+                    bufferedWriter.newLine();
+                    bufferedWriter.flush();
+                } else {
+                    bufferedWriter.write(name + ": " + message);
+                    bufferedWriter.newLine();
+                    bufferedWriter.flush();
+                }
             }
         } catch (IOException e){
             closeEverything(socket, bufferedReader, bufferedWriter);

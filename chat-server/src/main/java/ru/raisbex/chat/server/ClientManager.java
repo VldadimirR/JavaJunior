@@ -50,9 +50,20 @@ public class ClientManager implements Runnable {
         for (ClientManager client: clients) {
             try {
                 if (!client.name.equals(name)) {
-                    client.bufferedWriter.write(message);
-                    client.bufferedWriter.newLine();
-                    client.bufferedWriter.flush();
+                    if (message.startsWith("@")) {
+                        String[] parts = message.split(" ", 2);
+                        String targetName = parts[0].substring(1);
+                        String personalMessage = parts[1];
+                        if (targetName.equalsIgnoreCase(client.name)) {
+                            client.bufferedWriter.write("Персональное сообщение от " + name + ": " + personalMessage);
+                            client.bufferedWriter.newLine();
+                            client.bufferedWriter.flush();
+                        }
+                    } else {
+                        client.bufferedWriter.write(message);
+                        client.bufferedWriter.newLine();
+                        client.bufferedWriter.flush();
+                    }
                 }
             }
             catch (IOException e){
@@ -60,7 +71,6 @@ public class ClientManager implements Runnable {
             }
         }
     }
-
 
     private void closeEverything(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter) {
         // Удаление клиента из коллекции
