@@ -70,6 +70,7 @@ public class ClientManager implements Runnable {
                 closeEverything(socket, bufferedReader, bufferedWriter);
             }
         }
+
     }
 
     private void closeEverything(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter) {
